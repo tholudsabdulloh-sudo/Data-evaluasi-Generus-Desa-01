@@ -79,17 +79,6 @@ if st.button("💾 SIMPAN DATA EVALUASI", use_container_width=True):
         }
         st.session_state.rekap.append(data_baru)
         
-        # Simpan ke Google Sheets
-        try:
-            conn = st.connection("gsheets", type=GSheetsConnection)
-            existing_data = conn.read(worksheet="Sheet1", ttl=0)
-            updated_df = pd.concat([existing_data, pd.DataFrame([data_baru])], ignore_index=True)
-            conn.update(worksheet="Sheet1", data=updated_df)
-            st.success(f"Berhasil! Data {nama} tersimpan secara lokal dan di Google Sheets.")
-            st.balloons()
-        except Exception as e:
-            st.error(f"Gagal ke Google Sheets: {e}")
-            st.warning("Data hanya tersimpan sementara di tabel bawah.")
     else:
         st.warning("Nama harus diisi!")
 
