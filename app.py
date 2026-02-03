@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-from streamlit_gsheets import GSheetsConnection
 
 # 1. KONFIGURASI HALAMAN
 st.set_page_config(page_title="Data Generus Desa 1", layout="wide")
